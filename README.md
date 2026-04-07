@@ -77,6 +77,7 @@ This product accurately calculates and visualizes six cutting-edge physics metri
 ├── app_en.py               # Development App (English)
 ├── requirements.txt        # Cloud deployment dependencies
 └── README.md               # Project documentation
+```
 
 ---
 
