@@ -72,11 +72,11 @@ with st.sidebar:
         st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
     
         # 使用 Hits API，它會永久幫你存在雲端伺服器
-        st.markdown(f"""
-            <div style="margin-top: 5px;">
-                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2F{project_id}&count_bg=%234A90E2&title_bg=%231f2937&icon=&icon_color=%23E7E7E7&title=VIEWS&edge_flat=false" alt="Hits"/>
-            </div>
-        """, unsafe_allow_html=True)
+        # 請將 Paul-Lai0111 換成你的 GitHub 帳號名稱
+        st.markdown(
+            f'<img src="https://raw.githubusercontent.com/Paul-Lai0111/2024MLB_DeepPitch_Dashboard/main/image/hits.png" width="100">', 
+            unsafe_allow_html=True)
+
 
     # 直接在側邊欄呼叫
     display_view_counter()
