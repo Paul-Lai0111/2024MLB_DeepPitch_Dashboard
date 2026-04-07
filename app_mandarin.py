@@ -25,15 +25,38 @@ PITCH_NAMES = {
 # --- 2. 頁面基本設定 ---
 st.set_page_config(page_title="DeepPitch | 2024 MLB投手物理分析儀表板", layout="wide")
 
-@st.cache_data
-def load_data():
-    db = PitchDB()
-    df_raw = db.query_to_df("SELECT * FROM statcast_2024")
-    df = compute_big6(df_raw)
-    df['pitch_name_full'] = df['pitch_type'].map(PITCH_NAMES).fillna(df['pitch_type'])
-    return df
+@st.cache_resource
+def get_db():
+    """確保連線物件在整個 Session 中只被建立一次"""
+    return PitchDB()
 
-df_all = load_data()
+@st.cache_data(ttl=3600)
+def load_data():
+    # 呼叫上面快取好的 db 物件
+    db = get_db()
+    
+    # 只選取「計算 Big 6」與「繪圖」必要的欄位
+    # 1GB 記憶體不會被 SELECT * 撐爆
+    needed_cols = [
+        "player_name", "pitch_type", "release_speed", 
+        "release_pos_x", "release_pos_z", "release_extension",
+        "vx0", "vy0", "vz0", "ax", "ay", "az",
+        "sz_top", "sz_bot", "plate_x", "plate_z", "events", "description"
+    ]
+    cols_sql = ", ".join(needed_cols)
+    
+    # 從資料庫抓取數據
+    df_raw = db.query_to_df(f"SELECT {cols_sql} FROM statcast_2024")
+    
+    # 執行物理引擎計算 (Big 6)
+    df = compute_big6(df_raw)
+    
+    # 映射球種全名
+    df['pitch_name_full'] = df['pitch_type'].map(PITCH_NAMES).fillna(df['pitch_type'])
+    
+    return df
+with st.spinner("正在啟動 DeepPitch 物理引擎並載入 2024 MLB 數據..."):
+    df = load_data()
 
 # --- 3. 側邊欄：個人資訊 ---
 with st.sidebar:
