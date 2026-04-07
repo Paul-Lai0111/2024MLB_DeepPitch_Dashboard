@@ -65,21 +65,21 @@ with st.sidebar:
     import streamlit as st
 
     def display_view_counter():
-        # 專案資訊
-        repo_path = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
+        # 專案路徑
+        repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
     
         st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
     
-        # --- 標籤 1：會跳動的瀏覽量 (每次重整都會算) ---
-        # 我們利用一個簡單的 SVG 計數服務，這在 Streamlit 渲染最穩
-        view_url = f"https://profile-counter.glitch.me/{repo_path.replace('/', '-')}/count.svg"
+        # 方案 A：會跳動的計數器 (每次重新整理都會增加)
+        # 我們直接給它一個乾淨的網址
+        counter_url = f"https://profile-counter.glitch.me/{repo.replace('/', '-')}/count.svg"
     
-        # --- 標籤 2：專業的 GitHub 標籤 ---
+        # 方案 B：專業的 GitHub 標籤
         github_badge = "https://img.shields.io/badge/GitHub-Repository-blue?logo=github&style=flat"
 
-        # 使用 Markdown 排版，讓兩個標籤排在一起或上下並列
-        st.markdown(f"![Views]({view_url})")
-        st.markdown(f"[![GitHub]({github_badge})](https://github.com/{repo_path})")
+        # 使用 st.image 分開顯示，這樣最穩定，絕對不會 Error
+        st.image(counter_url, caption="Total Views")
+        st.markdown(f"[![GitHub]({github_badge})](https://github.com/{repo})")
     
 
 
