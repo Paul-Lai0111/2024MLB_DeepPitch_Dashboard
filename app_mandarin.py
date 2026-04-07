@@ -25,10 +25,41 @@ PITCH_NAMES = {
 # --- 2. 頁面基本設定 ---
 st.set_page_config(page_title="DeepPitch | 2024 MLB投手物理分析儀表板", layout="wide")
 
-@st.cache_data
+REQUIRED_COLS = [
+    # 識別欄位
+    "player_name", "pitcher", "batter",
+    "game_date", "inning", "pitch_type",
+
+    # 速度與運動
+    "release_speed", "release_spin_rate",
+    "release_extension",
+    "release_pos_x", "release_pos_z",
+
+    # Statcast 運動向量
+    "vx0", "vy0", "vz0",
+    "ax", "ay", "az",
+
+    # 位移 (pfx)
+    "pfx_x", "pfx_z",
+
+    # SSW 需要
+    "spin_axis",
+
+    # UI 顯示用
+    "plate_x", "plate_z",
+]
+
+@st.cache_data(ttl=3600, max_entries=1)
 def load_data():
     db = PitchDB()
-    df_raw = db.query_to_df("SELECT * FROM statcast_2024")
+    cols = ", ".join(REQUIRED_COLS)
+    df_raw = db.query_to_df(f"""
+        SELECT {cols}
+        FROM statcast_2024
+        WHERE pitch_type IS NOT NULL
+          AND release_speed IS NOT NULL
+          AND release_speed > 0
+    """)
     df = compute_big6(df_raw)
     df['pitch_name_full'] = df['pitch_type'].map(PITCH_NAMES).fillna(df['pitch_type'])
     return df
