@@ -65,20 +65,13 @@ with st.sidebar:
     import streamlit as st
 
     def display_view_counter():
-
-        repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
-    
-        st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
-
-        # 使用 Shields.io 配合自帶的計數功能
-
-        hits_url = f"https://img.shields.io/badge/dynamic/json?label=Views&query=value&url=https%3A%2F%2Fapi.countapi.xyz%2Fhit%2F{repo.replace('/', '-')}%2Fvisits&color=brightgreen"
+    st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
     
 
-        st.image(f"https://img.shields.io/github/followers/Paul-Lai0111?label=Views&style=flat-square&color=blue")
+    repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
+    hits_url = f"https://itest.info/hits/github/{repo}"
     
-        # 或者用這個最簡單的純圖片標籤 
-        st.markdown(f"![Views](https://itest.info/hits/github/{repo})")
+    st.markdown(f"[![Views]({hits_url})](https://github.com/{repo})")
 
 
     # 直接在側邊欄呼叫
