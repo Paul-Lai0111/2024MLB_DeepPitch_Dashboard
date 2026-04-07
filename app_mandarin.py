@@ -65,18 +65,26 @@ with st.sidebar:
     import streamlit as st
 
     def display_view_counter():
-        # 顯示小標題
+        # 確保這幾行前面都有 4 個空格
         st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
     
+        # 專案路徑 (請確認帳號名稱大小寫正確)
         repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
-        st.markdown(f"""
-        [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/{repo})
-        ![Python](https://img.shields.io/badge/Python-3.12-blue)
-        """)
     
+        # A. 動態計數器 (會跳數字，黑底白字版)
+        # 這個網址最穩，不會被 Streamlit 擋掉
+        view_url = f"https://profile-counter.glitch.me/{repo.replace('/', '-')}/count.svg"
+    
+        # B. 專業 GitHub 標籤 (藍色)
+        badge_url = "https://img.shields.io/badge/GitHub-Repository-blue?logo=github"
 
+        # 使用 st.image 渲染計數器，這是雲端最穩定的方式
+        st.image(view_url, width=120)
+    
+        # 使用 Markdown 顯示專業標籤連結
+        st.markdown(f"[![GitHub]({badge_url})](https://github.com/{repo})")
 
-    # 直接在側邊欄呼叫
+    # --- 這裡很重要：要在最左邊呼叫它 ---
     display_view_counter()
 
 # --- 4. 主頁面：建立 Tabs ---
