@@ -78,8 +78,10 @@ This product accurately calculates and visualizes six cutting-edge physics metri
 ├── requirements.txt        # Cloud deployment dependencies
 └── README.md               # Project documentation
 
-# About the Author (關於作者)
+---
 
-### Paul Lai (Hong-Min Lai)
+## About the Author (關於作者)
+
+**Paul Lai (Hong-Min Lai)**
 
 * **Education**: M.S. in Data Science, University of California, San Diego (UCSD)
