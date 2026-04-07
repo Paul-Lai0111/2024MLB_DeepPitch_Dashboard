@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+models/*.onnx
+.vscode/
+data/*.parquet
+data/*.csv
+view_count.txt
+.DS_Store
