@@ -65,13 +65,10 @@ with st.sidebar:
     import streamlit as st
 
     def display_view_counter():
-    st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
-    
-
-    repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
-    hits_url = f"https://itest.info/hits/github/{repo}"
-    
-    st.markdown(f"[![Views]({hits_url})](https://github.com/{repo})")
+        st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
+        repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
+        hits_url = f"https://itest.info/hits/github/{repo}"
+        st.markdown(f"[![Views]({hits_url})](https://github.com/{repo})")
 
 
     # 直接在側邊欄呼叫
