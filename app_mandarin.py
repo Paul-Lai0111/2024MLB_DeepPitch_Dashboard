@@ -64,20 +64,20 @@ with st.sidebar:
     # 在 app_mandarin.py 中
     import streamlit as st
 
-def display_view_counter():
-    # 這是你的專案唯一識別碼
-    project_id = "paul-2024mlb-deeppitch-analytics"
+    def display_view_counter():
+        # 這是你的專案唯一識別碼
+        project_id = "paul-2024mlb-deeppitch-analytics"
 
-    st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
+        st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
 
-    # 使用第三方 Hits 計數器 API (這會自動生成一張帶有數字的動態圖片)
-    # 你可以更換 color 分別為 green, blue, flat 等
-    hits_url = f"https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPaul-Lai0111%2F{project_id}&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false"
+        # 使用第三方 Hits 計數器 API (這會自動生成一張帶有數字的動態圖片)
+        # 你可以更換 color 分別為 green, blue, flat 等
+        hits_url = f"https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPaul-Lai0111%2F{project_id}&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false"
     
-    st.markdown(
-        f'<img src="{hits_url}" width="120">', 
-        unsafe_allow_html=True
-    )
+        st.markdown(
+            f'<img src="{hits_url}" width="120">', 
+            unsafe_allow_html=True
+        )
 
 
     # 直接在側邊欄呼叫
