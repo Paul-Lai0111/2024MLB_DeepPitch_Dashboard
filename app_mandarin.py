@@ -65,15 +65,10 @@ with st.sidebar:
     import streamlit as st
 
     def display_view_counter():
+        # 顯示小標題
         st.caption("數據來源: 2024 MLB Statcast | 物理引擎: DeepPitch v3.0")
     
-        repo = "Paul-Lai0111/2024MLB_DeepPitch_Dashboard"
-    
-    # 這是最穩定的 Badge 語法
-        st.markdown(f"""
-        [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/{repo})
-        ![Python](https://img.shields.io/badge/Python-3.12-blue)
-        """)
+        st.image(f"https://img.shields.io/github/followers/Paul-Lai0111?label=Views&style=flat-square&color=blue")
     
 
 
