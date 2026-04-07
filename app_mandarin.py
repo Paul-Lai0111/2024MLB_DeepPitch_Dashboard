@@ -34,7 +34,8 @@ def get_db():
 def load_data():
     # 呼叫上面快取好的 db 物件
     db = get_db()
-    
+    st.write("### 🛠️ 數據庫欄位檢查 (Debug)")
+    st.write(db.query_to_df("PRAGMA table_info('statcast_2024')"))
     # 只選取「計算 Big 6」與「繪圖」必要的欄位
     # 1GB 記憶體不會被 SELECT * 撐爆
     needed_cols = [
