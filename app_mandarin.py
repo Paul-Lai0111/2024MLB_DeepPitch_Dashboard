@@ -41,7 +41,7 @@ def load_data():
         "player_name", "pitch_type", "release_speed", 
         "release_pos_x", "release_pos_z", "release_extension",
         "vx0", "vy0", "vz0", "ax", "ay", "az",
-        "sz_top", "sz_bot", "plate_x", "plate_z", "events", "description"
+        "sz_top", "sz_bot", "plate_x", "plate_z"
     ]
     cols_sql = ", ".join(needed_cols)
     
